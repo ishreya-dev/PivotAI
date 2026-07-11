@@ -20,10 +20,7 @@ Total cost of the dataset behind the whole project: **$8.**
 
 ---
 
-## Demo
-Demo
-
-System architecture:
+## System architecture
 
 ![Architecture](docs/architecture.png)
 
