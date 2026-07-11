@@ -1,0 +1,29 @@
+# Environment variables — never commit real secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Data (reproducible, excluded per project design)
+data/synthetic/
+data/traces/
+data/training/
+data/seeds/
+.cache/
+
+# Models (large GGUF files, hosted on HuggingFace instead)
+models/
+
+# Logs
+logs/
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
