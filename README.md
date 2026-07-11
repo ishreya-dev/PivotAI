@@ -21,11 +21,13 @@ Total cost of the dataset behind the whole project: **$8.**
 ---
 
 ## Demo
+Demo
 
-> Add screenshots/GIFs here: architecture diagram, Swagger UI at `/docs`, and a sample `/optimize` request/response.
+System architecture:
 
-`![Architecture](docs/architecture.png)`
+![Architecture](docs/architecture.png)
 
+<sub>SVG source: docs/architecture.svg · generated via docs/gen_architecture.py</sub>
 ---
 
 ## Why PivotAI?
