@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-06-11T05:53:52.393854+00:00",
+  "eval_file": "/Users/avssp/Desktop/travel_project/data/evals/eval_results_20260611_051255.jsonl",
+  "red_team_file": "/Users/avssp/Desktop/travel_project/data/evals/red_team_results_20260610_165801.jsonl",
+  "targets": {
+    "json_valid": 0.85,
+    "savings_valid": 0.7,
+    "budget_compliance": 0.8,
+    "schema_compliance": 0.8,
+    "intent_alignment": 0.55,
+    "rouge_l": 0.25,
+    "bertscore_f1": 0.7,
+    "reasoning_coherence": 0.65,
+    "grounding_accuracy": 0.6,
+    "red_team_pass": 0.8
+  },
+  "models": {
+    "pivotai-ft": {
+      "n": 92,
+      "json_valid": 1.0,
+      "savings_valid": 1.0,
+      "budget_compliance": 0.987012987012987,
+      "schema_compliance": 0.837,
+      "intent_alignment": 0.3217,
+      "rouge_l": 0.436,
+      "bertscore_f1": 0.9317,
+      "reasoning_coherence": 0.7228,
+      "grounding_accuracy": 0.8946,
+      "red_team_pass": 0.5333,
+      "red_team_n": 15
+    },
+    "pivotai-distill": {
+      "n": 92,
+      "json_valid": 0.9239130434782609,
+      "savings_valid": 0.9814814814814815,
+      "budget_compliance": null,
+      "schema_compliance": 0.0,
+      "intent_alignment": null,
+      "rouge_l": 0.0895,
+      "bertscore_f1": 0.7376,
+      "reasoning_coherence": 0.6741,
+      "grounding_accuracy": 0.4424,
+      "red_team_pass": 0.4667,
+      "red_team_n": 15
+    },
+    "pivotai-curriculum": {
+      "n": 92,
+      "json_valid": 0.10869565217391304,
+      "savings_valid": null,
+      "budget_compliance": null,
+      "schema_compliance": 0.0,
+      "intent_alignment": 0.4183,
+      "rouge_l": 0.1268,
+      "bertscore_f1": 0.7343,
+      "reasoning_coherence": 0.47,
+      "grounding_accuracy": 0.88,
+      "red_team_pass": 0.6,
+      "red_team_n": 15
+    }
+  },
+  "head_to_head": {
+    "pivotai-ft_vs_pivotai-distill": {
+      "wins_a": 72,
+      "wins_b": 20,
+      "ties": 0,
+      "win_rate_a": 0.7826
+    },
+    "pivotai-ft_vs_pivotai-curriculum": {
+      "wins_a": 52,
+      "wins_b": 40,
+      "ties": 0,
+      "win_rate_a": 0.5652
+    },
+    "pivotai-distill_vs_pivotai-curriculum": {
+      "wins_a": 48,
+      "wins_b": 44,
+      "ties": 0,
+      "win_rate_a": 0.5217
+    }
+  }
+}
