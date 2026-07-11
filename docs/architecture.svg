@@ -1,0 +1,209 @@
+<svg viewBox="0 0 920 1060" xmlns="http://www.w3.org/2000/svg" role="img" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <title>pivotai System Architecture</title>
+  <defs>
+    <marker id="abig" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0 0 L12 6 L0 12 z" fill="#4B5563"/>
+    </marker>
+    <marker id="asm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 1 L9 5 L0 9 z" fill="#9CA3AF"/>
+    </marker>
+  </defs>
+
+  <rect width="920" height="1060" fill="#F9FAFB"/>
+
+  <!-- TITLE -->
+  <text x="460" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#111827">pivotai — System Architecture</text>
+
+  <!-- PHASE 1 -->
+  <rect x="50" y="48" width="820" height="148" rx="12" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <rect x="50" y="48" width="820" height="36" rx="12" fill="#EA580C"/>
+  <rect x="50" y="68" width="820" height="16" fill="#EA580C"/>
+  <circle cx="84" cy="66" r="16" fill="white" stroke="#EA580C" stroke-width="2"/>
+  <text x="84" y="71" text-anchor="middle" font-size="14" font-weight="800" fill="#EA580C">1</text>
+  <text x="110" y="72" font-size="12" font-weight="700" fill="white">PHASE 1 — Synthetic Data Engine</text>
+
+  <rect x="66" y="96" width="196" height="84" rx="7" fill="#FFEDD5" stroke="#FB923C" stroke-width="1.5"/>
+  <text x="164" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">GPT-4o-mini</text>
+  <text x="164" y="134" text-anchor="middle" font-size="10" fill="#7C3E00">teacher model · $4</text>
+  <text x="164" y="150" text-anchor="middle" font-size="10" fill="#7C3E00">5,000 API calls</text>
+  <text x="164" y="170" text-anchor="middle" font-size="9" fill="#9CA3AF">20 cities · 5 budgets · 8 intents</text>
+
+  <line x1="262" y1="138" x2="302" y2="138" stroke="#9CA3AF" stroke-width="2" marker-end="url(#asm)"/>
+
+  <rect x="302" y="96" width="215" height="84" rx="7" fill="#FFEDD5" stroke="#FB923C" stroke-width="1.5"/>
+  <text x="409" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">3-Gate Validator</text>
+  <text x="409" y="134" text-anchor="middle" font-size="10" fill="#7C3E00">hostel check</text>
+  <text x="409" y="150" text-anchor="middle" font-size="10" fill="#7C3E00">savings ≥ 5% · budget bounds</text>
+  <text x="409" y="170" text-anchor="middle" font-size="9" fill="#9CA3AF">~12% rejection rate</text>
+
+  <line x1="517" y1="138" x2="557" y2="138" stroke="#9CA3AF" stroke-width="2" marker-end="url(#asm)"/>
+
+  <rect x="557" y="96" width="295" height="84" rx="7" fill="#FFEDD5" stroke="#FB923C" stroke-width="1.5"/>
+  <text x="704" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#C2410C">5,000 Training Pairs</text>
+  <text x="704" y="134" text-anchor="middle" font-size="10" fill="#7C3E00">(baseline, optimized) itineraries</text>
+  <text x="704" y="150" text-anchor="middle" font-size="10" fill="#7C3E00">pivot_analysis · Alpaca format</text>
+  <text x="704" y="170" text-anchor="middle" font-size="9" fill="#9CA3AF">checkpoint-safe · resume on crash</text>
+
+  <!-- BIG ARROW 1→2 -->
+  <line x1="460" y1="196" x2="460" y2="240" stroke="#4B5563" stroke-width="6" marker-end="url(#abig)"/>
+  <rect x="470" y="205" width="196" height="24" rx="5" fill="#E5E7EB"/>
+  <text x="568" y="221" text-anchor="middle" font-size="10" font-weight="600" fill="#374151">5,000 training pairs</text>
+
+  <!-- PHASE 2 -->
+  <rect x="50" y="248" width="820" height="246" rx="12" fill="#F0FDF4" stroke="#22C55E" stroke-width="2"/>
+  <rect x="50" y="248" width="820" height="36" rx="12" fill="#16A34A"/>
+  <rect x="50" y="268" width="820" height="16" fill="#16A34A"/>
+  <circle cx="84" cy="266" r="16" fill="white" stroke="#16A34A" stroke-width="2"/>
+  <text x="84" y="271" text-anchor="middle" font-size="14" font-weight="800" fill="#16A34A">2</text>
+  <text x="110" y="272" font-size="12" font-weight="700" fill="white">PHASE 2 — Multi-Agent Orchestration  (DeepSeek V4 Flash · $4 · 500 traces)</text>
+
+  <text x="460" y="304" text-anchor="middle" font-size="10" fill="#6B7280" font-style="italic">4 MCP Servers — official mcp library · SSE transport · disk cache ttl=86400s</text>
+
+  <rect x="62" y="312" width="185" height="44" rx="6" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="154" y="330" text-anchor="middle" font-size="10" font-weight="600" fill="#15803D">routing_server :8001</text>
+  <text x="154" y="347" text-anchor="middle" font-size="9" fill="#6B7280">get_route · geocode_city</text>
+
+  <rect x="257" y="312" width="185" height="44" rx="6" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="349" y="330" text-anchor="middle" font-size="10" font-weight="600" fill="#15803D">hotels_server :8002</text>
+  <text x="349" y="347" text-anchor="middle" font-size="9" fill="#6B7280">search_hotels · search_flights</text>
+
+  <rect x="452" y="312" width="195" height="44" rx="6" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="549" y="330" text-anchor="middle" font-size="10" font-weight="600" fill="#15803D">overpass_server :8003</text>
+  <text x="549" y="347" text-anchor="middle" font-size="9" fill="#6B7280">search_pois · search_restaurants</text>
+
+  <rect x="657" y="312" width="205" height="44" rx="6" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="759" y="330" text-anchor="middle" font-size="10" font-weight="600" fill="#15803D">search_server :8004</text>
+  <text x="759" y="347" text-anchor="middle" font-size="9" fill="#6B7280">web_search (DuckDuckGo)</text>
+
+  <line x1="460" y1="356" x2="460" y2="378" stroke="#9CA3AF" stroke-width="2" marker-end="url(#asm)"/>
+
+  <!-- Supervisor dashed -->
+  <rect x="62" y="380" width="795" height="100" rx="8" fill="none" stroke="#86EFAC" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="82" y="396" font-size="9" fill="#6B7280">Supervisor — async · concurrency=3 · checkpoint-resume · quality filter → 500 clean traces</text>
+
+  <rect x="74" y="402" width="220" height="68" rx="6" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="184" y="421" text-anchor="middle" font-size="11" font-weight="700" fill="#15803D">Analyst</text>
+  <text x="184" y="438" text-anchor="middle" font-size="9" fill="#374151">get_route · search_hotels · search_flights</text>
+  <text x="184" y="454" text-anchor="middle" font-size="9" fill="#6B7280">→ cost_report</text>
+  <text x="184" y="464" text-anchor="middle" font-size="8" fill="#9CA3AF">transit + hotel cost analysis</text>
+
+  <line x1="294" y1="436" x2="326" y2="436" stroke="#9CA3AF" stroke-width="2.5" marker-end="url(#asm)"/>
+
+  <rect x="326" y="402" width="232" height="68" rx="6" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="442" y="421" text-anchor="middle" font-size="11" font-weight="700" fill="#15803D">Concierge</text>
+  <text x="442" y="438" text-anchor="middle" font-size="9" fill="#374151">search_pois · search_restaurants · web_search</text>
+  <text x="442" y="454" text-anchor="middle" font-size="9" fill="#6B7280">→ substitutions</text>
+  <text x="442" y="464" text-anchor="middle" font-size="8" fill="#9CA3AF">POI + dining replacements</text>
+
+  <line x1="558" y1="436" x2="590" y2="436" stroke="#9CA3AF" stroke-width="2.5" marker-end="url(#asm)"/>
+
+  <rect x="590" y="402" width="258" height="68" rx="6" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1.5"/>
+  <text x="719" y="421" text-anchor="middle" font-size="11" font-weight="700" fill="#15803D">Optimizer</text>
+  <text x="719" y="438" text-anchor="middle" font-size="9" fill="#374151">all tools → optimized itinerary + pivot_analysis</text>
+  <text x="719" y="454" text-anchor="middle" font-size="9" fill="#6B7280">→ 500 traces saved</text>
+  <text x="719" y="464" text-anchor="middle" font-size="8" fill="#9CA3AF">final synthesis</text>
+
+  <!-- BIG ARROW 2→3 -->
+  <line x1="460" y1="494" x2="460" y2="538" stroke="#4B5563" stroke-width="6" marker-end="url(#abig)"/>
+  <rect x="470" y="503" width="248" height="24" rx="5" fill="#E5E7EB"/>
+  <text x="594" y="519" text-anchor="middle" font-size="10" font-weight="600" fill="#374151">500 agent traces + llama3.1:8b baseline</text>
+
+  <!-- PHASE 3 -->
+  <rect x="50" y="546" width="820" height="158" rx="12" fill="#FAF5FF" stroke="#A855F7" stroke-width="2"/>
+  <rect x="50" y="546" width="820" height="36" rx="12" fill="#9333EA"/>
+  <rect x="50" y="566" width="820" height="16" fill="#9333EA"/>
+  <circle cx="84" cy="564" r="16" fill="white" stroke="#9333EA" stroke-width="2"/>
+  <text x="84" y="569" text-anchor="middle" font-size="14" font-weight="800" fill="#9333EA">3</text>
+  <text x="110" y="570" font-size="12" font-weight="700" fill="white">PHASE 3 — QLoRA Fine-Tuning  (Llama 3.1 8B · Unsloth · r=8)</text>
+
+  <rect x="62" y="592" width="248" height="100" rx="8" fill="#F3E8FF" stroke="#C084FC" stroke-width="1.5"/>
+  <text x="186" y="612" text-anchor="middle" font-size="12" font-weight="700" fill="#7E22CE">pivotai-ft</text>
+  <text x="186" y="630" text-anchor="middle" font-size="10" fill="#6B7280">SFT on 4,749 Phase 1 pairs</text>
+  <text x="186" y="646" text-anchor="middle" font-size="10" fill="#6B7280">Colab T4 · fp16 · 3 epochs</text>
+  <text x="186" y="662" text-anchor="middle" font-size="10" fill="#6B7280">loss 0.225 · 4.6 GB GGUF</text>
+  <text x="186" y="678" text-anchor="middle" font-size="9" fill="#9CA3AF">plain SFT on synthetic pairs</text>
+
+  <rect x="336" y="592" width="248" height="100" rx="8" fill="#F3E8FF" stroke="#C084FC" stroke-width="1.5"/>
+  <text x="460" y="612" text-anchor="middle" font-size="12" font-weight="700" fill="#7E22CE">pivotai-distill</text>
+  <text x="460" y="630" text-anchor="middle" font-size="10" fill="#6B7280">KD on 449 Phase 2 traces</text>
+  <text x="460" y="646" text-anchor="middle" font-size="10" fill="#6B7280">Lightning A100 · bf16 · 5 epochs</text>
+  <text x="460" y="662" text-anchor="middle" font-size="10" fill="#6B7280">loss 0.254 · 4.6 GB GGUF</text>
+  <text x="460" y="678" text-anchor="middle" font-size="9" fill="#9CA3AF">distilled from agent traces</text>
+
+  <rect x="610" y="592" width="248" height="100" rx="8" fill="#F3E8FF" stroke="#C084FC" stroke-width="1.5"/>
+  <text x="734" y="612" text-anchor="middle" font-size="12" font-weight="700" fill="#7E22CE">pivotai-curriculum</text>
+  <text x="734" y="630" text-anchor="middle" font-size="10" fill="#6B7280">2-stage: Phase 1 → Phase 2</text>
+  <text x="734" y="646" text-anchor="middle" font-size="10" fill="#6B7280">Lightning A100 · lr decay 4×</text>
+  <text x="734" y="662" text-anchor="middle" font-size="10" fill="#6B7280">loss 0.241/0.505 · 4.6 GB GGUF</text>
+  <text x="734" y="678" text-anchor="middle" font-size="9" fill="#9CA3AF">sequential domain→reasoning</text>
+
+  <!-- BIG ARROW 3→4 -->
+  <line x1="460" y1="704" x2="460" y2="748" stroke="#4B5563" stroke-width="6" marker-end="url(#abig)"/>
+  <rect x="470" y="714" width="222" height="24" rx="5" fill="#E5E7EB"/>
+  <text x="581" y="730" text-anchor="middle" font-size="10" font-weight="600" fill="#374151">3 fine-tuned models + baseline</text>
+
+  <!-- PHASE 4 -->
+  <rect x="50" y="756" width="820" height="130" rx="12" fill="#FFF1F2" stroke="#F43F5E" stroke-width="2"/>
+  <rect x="50" y="756" width="820" height="36" rx="12" fill="#E11D48"/>
+  <rect x="50" y="776" width="820" height="16" fill="#E11D48"/>
+  <circle cx="84" cy="774" r="16" fill="white" stroke="#E11D48" stroke-width="2"/>
+  <text x="84" y="779" text-anchor="middle" font-size="14" font-weight="800" fill="#E11D48">4</text>
+  <text x="110" y="780" font-size="12" font-weight="700" fill="white">PHASE 4 — Evaluation &amp; Red Teaming  (92 cases × 4 models × 10 metrics)</text>
+
+  <rect x="62" y="800" width="244" height="74" rx="7" fill="#FFE4E6" stroke="#FDA4AF" stroke-width="1.5"/>
+  <text x="184" y="820" text-anchor="middle" font-size="11" font-weight="600" fill="#BE123C">Automated Metrics</text>
+  <text x="184" y="836" text-anchor="middle" font-size="9" fill="#6B7280">JSON valid · savings · budget · schema</text>
+  <text x="184" y="851" text-anchor="middle" font-size="9" fill="#6B7280">ROUGE-L · BERTScore</text>
+  <text x="184" y="866" text-anchor="middle" font-size="9" fill="#9CA3AF">all-MiniLM-L6-v2 · runs locally</text>
+
+  <rect x="338" y="800" width="244" height="74" rx="7" fill="#FFE4E6" stroke="#FDA4AF" stroke-width="1.5"/>
+  <text x="460" y="820" text-anchor="middle" font-size="11" font-weight="600" fill="#BE123C">LLM-as-Judge</text>
+  <text x="460" y="836" text-anchor="middle" font-size="9" fill="#6B7280">DeepSeek V4 Flash judge</text>
+  <text x="460" y="851" text-anchor="middle" font-size="9" fill="#6B7280">reasoning coherence · grounding</text>
+  <text x="460" y="866" text-anchor="middle" font-size="9" fill="#9CA3AF">rate-limited · 1s interval + cache</text>
+
+  <rect x="614" y="800" width="244" height="74" rx="7" fill="#FFE4E6" stroke="#FDA4AF" stroke-width="1.5"/>
+  <text x="736" y="820" text-anchor="middle" font-size="11" font-weight="600" fill="#BE123C">Red Teaming · 45 cases</text>
+  <text x="736" y="836" text-anchor="middle" font-size="9" fill="#6B7280">adversarial prompts</text>
+  <text x="736" y="851" text-anchor="middle" font-size="9" fill="#6B7280">budget overrides · injection attempts</text>
+  <text x="736" y="866" text-anchor="middle" font-size="9" fill="#9CA3AF">constraint refusal scoring</text>
+
+  <!-- BIG ARROW 4→5 -->
+  <line x1="460" y1="886" x2="460" y2="928" stroke="#4B5563" stroke-width="6" marker-end="url(#abig)"/>
+  <rect x="470" y="896" width="186" height="24" rx="5" fill="#E5E7EB"/>
+  <text x="563" y="912" text-anchor="middle" font-size="10" font-weight="600" fill="#374151">eval results + summary JSON</text>
+
+  <!-- PHASE 5 -->
+  <rect x="50" y="936" width="820" height="108" rx="12" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+  <rect x="50" y="936" width="820" height="36" rx="12" fill="#0284C7"/>
+  <rect x="50" y="956" width="820" height="16" fill="#0284C7"/>
+  <circle cx="84" cy="954" r="16" fill="white" stroke="#0284C7" stroke-width="2"/>
+  <text x="84" y="959" text-anchor="middle" font-size="14" font-weight="800" fill="#0284C7">5</text>
+  <text x="110" y="960" font-size="12" font-weight="700" fill="white">PHASE 5 — FastAPI Inference Server  (async · Pydantic validation · Swagger /docs)</text>
+
+  <rect x="62" y="980" width="132" height="52" rx="6" fill="#E0F2FE" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="128" y="1000" text-anchor="middle" font-size="10" font-weight="600" fill="#0369A1">GET /health</text>
+  <text x="128" y="1016" text-anchor="middle" font-size="9" fill="#6B7280">Ollama + models</text>
+  <text x="128" y="1028" text-anchor="middle" font-size="8" fill="#9CA3AF">liveness check</text>
+
+  <rect x="206" y="980" width="132" height="52" rx="6" fill="#E0F2FE" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="272" y="1000" text-anchor="middle" font-size="10" font-weight="600" fill="#0369A1">GET /models</text>
+  <text x="272" y="1016" text-anchor="middle" font-size="9" fill="#6B7280">4 models + desc</text>
+  <text x="272" y="1028" text-anchor="middle" font-size="8" fill="#9CA3AF">registry listing</text>
+
+  <rect x="350" y="980" width="220" height="52" rx="6" fill="#BAE6FD" stroke="#0EA5E9" stroke-width="2"/>
+  <text x="460" y="1000" text-anchor="middle" font-size="11" font-weight="700" fill="#0369A1">POST /optimize</text>
+  <text x="460" y="1016" text-anchor="middle" font-size="9" fill="#0C4A6E">persona in → itinerary out</text>
+  <text x="460" y="1028" text-anchor="middle" font-size="8" fill="#0369A1">model registry validated</text>
+
+  <rect x="582" y="980" width="180" height="52" rx="6" fill="#E0F2FE" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="672" y="1000" text-anchor="middle" font-size="10" font-weight="600" fill="#0369A1">GET /results/*</text>
+  <text x="672" y="1016" text-anchor="middle" font-size="9" fill="#6B7280">/summary · /compare</text>
+  <text x="672" y="1028" text-anchor="middle" font-size="8" fill="#9CA3AF">instant · no inference</text>
+
+  <rect x="774" y="980" width="94" height="52" rx="6" fill="#E0F2FE" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="821" y="1000" text-anchor="middle" font-size="10" font-weight="600" fill="#0369A1">Swagger</text>
+  <text x="821" y="1016" text-anchor="middle" font-size="9" fill="#6B7280">/docs</text>
+  <text x="821" y="1028" text-anchor="middle" font-size="8" fill="#9CA3AF">auto-generated</text>
+
+</svg>
