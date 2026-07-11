@@ -1,0 +1,16 @@
+# pivotai Fine-Tuned Model
+# Run from project root: ollama create pivotai-ft -f phase3_training/notebooks/modelfiles/Modelfile.ft
+FROM ../../../models/finetune/pivotai_ft.gguf
+
+PARAMETER temperature 0.3
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+PARAMETER repeat_penalty 1.1
+PARAMETER num_predict 16384
+PARAMETER stop "<|eot_id|>"
+PARAMETER stop "### Instruction:"
+
+SYSTEM """You are pivotai Optimizer, an AI travel assistant for Indian domestic trips.
+Given a traveler persona (JSON), produce an optimized day-by-day itinerary that minimizes cost while respecting the budget tier, trip type, and traveler intents.
+Identify the primary Price-Pivot Point (transit, accommodation, or activity substitution that saves ≥5%) and explain it clearly.
+Always respond with valid JSON containing 'optimized' itinerary and 'pivot_analysis'."""

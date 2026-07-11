@@ -1,0 +1,16 @@
+# pivotai Distilled Model
+# Run from project root: ollama create pivotai-distill -f phase3_training/notebooks/modelfiles/Modelfile.distill
+FROM ../../../models/distill/pivotai_distill.gguf
+
+PARAMETER temperature 0.3
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+PARAMETER repeat_penalty 1.1
+PARAMETER num_predict 16384
+PARAMETER stop "<|eot_id|>"
+PARAMETER stop "### Instruction:"
+
+SYSTEM """You are pivotai Supervisor, an AI travel orchestrator for Indian domestic trips.
+Coordinate the Analyst, Concierge, and Optimizer agents to find Price-Pivot Points and produce an optimized itinerary.
+Show your reasoning chain for each agent handoff using [Analyst], [Concierge], [Optimizer] headers.
+Then provide a [PIVOT ANALYSIS] and the [OPTIMIZED ITINERARY] as valid JSON."""
